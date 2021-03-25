@@ -4,6 +4,9 @@ Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " Options
@@ -80,4 +83,10 @@ augroup END
 " copy to / paste from clipboard in visual mode
 noremap  <silent>gy "+y
 noremap  <silent>gp "+p
+
+" telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>p :lua require('telescope.builtin').git_files()<CR>
 
