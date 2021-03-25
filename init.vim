@@ -90,3 +90,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>p :lua require('telescope.builtin').git_files()<CR>
 
+"nnoremap <leader>f :lua require('telescope.builtin').grep_string({ search=vim.fn.expand("<cword>") })<CR>
+"nnoremap <leader>F :lua require('telescope.builtin').grep_string({ search=vim.fn.input("Grep for > ") })<CR>
+nnoremap <leader>l :lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>bp :lua require('telescope.builtin').file_browser()<CR>
+nnoremap <leader>bh :lua require('telescope.builtin').file_browser({ cwd=vim.fn.expand("%:p:h")})<CR>
