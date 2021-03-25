@@ -3,6 +3,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'nvim-lua/completion-nvim'
 call plug#end()
 
 " Options
@@ -25,7 +26,9 @@ set autoread
 " Setup LSP
 lua << EOF
 local lsp = require('lspconfig')
-lsp.gopls.setup{}
+lsp.gopls.setup{
+	on_attach = require('completion').on_attach,
+}
 EOF
 
 " Mappings
@@ -73,3 +76,8 @@ augroup LSP
     autocmd FileType go nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
     autocmd FileType go nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 augroup END
+
+" copy to / paste from clipboard in visual mode
+noremap  <silent>gy "+y
+noremap  <silent>gp "+p
+
